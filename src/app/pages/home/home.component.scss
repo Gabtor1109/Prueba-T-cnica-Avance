@@ -26,18 +26,18 @@
 /* HERO */
 .hero {
   border-radius: 18px;
-  padding: 14px 14px 10px;
-  overflow: hidden;
-  background: linear-gradient(135deg, rgba(99,102,241,.14), rgba(16,185,129,.10));
-  border: 1px solid rgba(15,23,42,.06);
+  padding: 6px 6px 2px;
+  background: transparent;
+  box-shadow: none;
+  border: 0;
 }
 
 .hero__top h1 {
   margin: 0;
-  font-size: 22px;
-  font-weight: 900;
+  font-size: 24px;
+  font-weight: 800;
 }
-.hero__top p { margin: 6px 0 0; opacity: .85; }
+.hero__top p { margin: 6px 0 0; color: #64748b; }
 .wave { display: inline-block; animation: wave 1.4s ease-in-out infinite; transform-origin: 70% 70%; }
 @keyframes wave { 0%,100% { transform: rotate(0deg);} 20% { transform: rotate(12deg);} 40% { transform: rotate(-8deg);} }
 
@@ -46,6 +46,8 @@
   border-radius: 18px;
   overflow: hidden;
   padding: 10px;
+  background: #fff;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, .12);
 }
 
 .swiper {
@@ -95,6 +97,8 @@ swiper-container::part(bullet) {
   border-radius: 18px;
   overflow: hidden;
   transition: transform .18s ease, box-shadow .18s ease;
+  box-shadow: 0 8px 16px rgba(15, 23, 42, .12);
+  background: #fff;
 }
 .c:hover { transform: translateY(-4px); }
 
@@ -129,6 +133,16 @@ swiper-container::part(bullet) {
 .content { padding: 12px 12px 14px; }
 .content h3 { margin: 0; font-size: 15px; font-weight: 900; }
 .content p { margin: 6px 0 0; opacity: .8; font-size: 13px; line-height: 1.35; }
+
+.cardBtn {
+  margin-top: 8px;
+  padding: 2px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  background: #e2e8f0;
+  color: #1f2937;
+}
 
 /* ABOUT */
 .about { border-radius: 18px; padding: 12px; }

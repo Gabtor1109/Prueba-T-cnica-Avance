@@ -25,9 +25,10 @@ import { MatDividerModule } from '@angular/material/divider';
 export class HeaderComponent {
   showMobileSearch = false;
 
-  // seal simple para refrescar estado al cambiar sesin
+  // senal simple para refrescar estado al cambiar sesion
   private tick = signal(0);
   isLoggedIn = computed(() => (this.tick(), this.auth.isLoggedIn()));
+  email = computed(() => (this.tick(), this.auth.getEmail()));
 
   constructor(private auth: AuthService, private router: Router) {
     this.auth.session$.subscribe(() => this.tick.update(v => v + 1));

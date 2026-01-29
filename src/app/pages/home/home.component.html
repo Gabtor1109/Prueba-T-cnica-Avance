@@ -3,18 +3,13 @@
   <!-- HERO / SALUDO -->
   <mat-card class="hero" *ngIf="isLoggedIn()">
     <div class="hero__top">
-      <h1>Hola <span class="wave">👋</span></h1>
-      <p>Sesion iniciada con <b>{{ email }}</b></p>
+      <h1>Hola, {{ displayName }} <span class="wave">👋</span></h1>
+      <p>Sesion activa: <b>{{ email }}</b></p>
     </div>
   </mat-card>
 
   <!-- BANNERS -->
   <section class="section">
-    <div class="section__head">
-      <h2>Banners</h2>
-      <span class="hint">Swiper + paginacion</span>
-    </div>
-
     <mat-card class="bannerCard">
       <swiper-container #swiperEl class="swiper" loop="true" pagination="true" pagination-clickable="true" autoplay="true" autoplay-delay="5000" autoplay-disable-on-interaction="false" slides-per-view="1">
         <swiper-slide *ngFor="let b of banners">
@@ -41,6 +36,7 @@
         <div class="content">
           <h3>{{ c.title }}</h3>
           <p>{{ c.text }}</p>
+          <button mat-button class="cardBtn">VER MAS</button>
         </div>
       </mat-card>
     </div>

@@ -1,11 +1,14 @@
 ﻿<mat-toolbar class="topbar">
   <!-- LEFT -->
   <div class="left">
-    <button mat-icon-button class="menu-btn" [matMenuTriggerFor]="menu" aria-label="MenÃº">
+    <button mat-icon-button class="menu-btn" [matMenuTriggerFor]="menu" aria-label="Menu">
       <mat-icon>menu</mat-icon>
     </button>
 
-    <a class="brand" routerLink="/home">Prueba FrontEnd</a>
+    <a class="brand" routerLink="/home">
+      <span class="brand-icon">P</span>
+      Prueba FrontEnd
+    </a>
 
     <nav class="nav-links">
       <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
@@ -13,15 +16,14 @@
       <a mat-button routerLink="/skills" routerLinkActive="active">Skills</a>
 
       <a mat-button routerLink="/login" *ngIf="!isLoggedIn()">Login</a>
-      <button mat-button (click)="logout()" *ngIf="isLoggedIn()">Cerrar sesión</button>
+      <button mat-button (click)="logout()" *ngIf="isLoggedIn()">Cerrar sesion</button>
     </nav>
   </div>
 
   <!-- CENTER -->
   <div class="center">
     <mat-form-field class="search" appearance="outline" [class.mobile-open]="showMobileSearch">
-      <mat-label>Buscar</mat-label>
-      <input matInput placeholder="No funcional" />
+      <input matInput placeholder="Buscar" />
       <button mat-icon-button matSuffix aria-label="Buscar">
         <mat-icon>search</mat-icon>
       </button>
@@ -34,6 +36,12 @@
     <button mat-icon-button class="searchIcon" aria-label="Buscar" (click)="showMobileSearch = !showMobileSearch">
       <mat-icon>search</mat-icon>
     </button>
+
+    <div class="user" *ngIf="isLoggedIn()">
+      <div class="avatar">{{ (email() || 'G')[0] | uppercase }}</div>
+      <span class="email">{{ email() }}</span>
+      <mat-icon class="chevron">expand_more</mat-icon>
+    </div>
   </div>
 
   <!-- Mobile menu -->
@@ -54,7 +62,7 @@
       <mat-icon>login</mat-icon><span>Login</span>
     </button>
     <button mat-menu-item (click)="logout()" *ngIf="isLoggedIn()">
-      <mat-icon>logout</mat-icon><span>Cerrar sesión</span>
+      <mat-icon>logout</mat-icon><span>Cerrar sesion</span>
     </button>
   </mat-menu>
 </mat-toolbar>

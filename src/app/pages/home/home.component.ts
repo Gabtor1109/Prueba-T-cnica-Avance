@@ -25,6 +25,7 @@ export class HomeComponent implements AfterViewInit {
   @ViewChild('swiperEl', { static: true }) swiperEl?: ElementRef;
 
   email: string | null = null;
+  displayName = 'Gogogo';
 
   // NO inicialices con this.selected aqui
   selectedStream!: Observable<SelectedItem | null>;
@@ -49,6 +50,7 @@ export class HomeComponent implements AfterViewInit {
     private dialog: MatDialog
   ) {
     this.email = this.auth.getEmail();
+    this.displayName = this.email?.split('@')[0] || this.displayName;
     this.selectedStream = this.selected.selected$;
   }
 
