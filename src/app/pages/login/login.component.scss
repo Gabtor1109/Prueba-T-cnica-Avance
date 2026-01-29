@@ -1,0 +1,28 @@
+.wrap {
+  display: grid;
+  place-items: center;
+  padding: 18px 0;
+}
+
+.card {
+  width: min(440px, 92vw);
+  padding: 14px 14px 18px;
+  border-radius: 16px;
+  animation: pop .25s ease;
+}
+
+mat-form-field { width: 100%; margin-top: 10px; }
+
+.btn {
+  width: 100%;
+  margin-top: 10px;
+  transition: transform .15s ease;
+  &:hover { transform: translateY(-1px); }
+}
+
+.ok { color: #1b5e20; font-weight: 600; margin: 6px 0 0; }
+
+@keyframes pop {
+  from { transform: translateY(6px); opacity: .6; }
+  to { transform: translateY(0); opacity: 1; }
+}

@@ -1,0 +1,34 @@
+﻿<section class="wrap">
+  <header class="top">
+    <h2>Listado (API + ngFor)</h2>
+    <p>Click en un elemento para enviarlo a Home (via servicio).</p>
+  </header>
+
+  <div class="grid" [class.loading]="loading && items.length === 0">
+    <mat-card class="item" *ngFor="let it of items" (click)="pick(it)">
+      <img [src]="it.image" [alt]="it.name" />
+      <div class="info">
+        <h4>{{ it.name }}</h4>
+        <small>{{ it.species }} - {{ it.gender }}</small>
+        <span class="badge">{{ it.status }}</span>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- paginacion propia -->
+  <div class="pager">
+    <button mat-stroked-button (click)="load(page-1)" [disabled]="page<=1">Anterior</button>
+
+    <button
+      mat-button
+      class="p"
+      *ngFor="let p of pagesToShow()"
+      [class.active]="p===page"
+      (click)="load(p)"
+    >
+      {{ p }}
+    </button>
+
+    <button mat-stroked-button (click)="load(page+1)" [disabled]="page>=totalPages">Siguiente</button>
+  </div>
+</section>

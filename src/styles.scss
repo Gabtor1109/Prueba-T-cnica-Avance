@@ -1,0 +1,22 @@
+﻿@import "swiper/css";
+@import "swiper/css/pagination";
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f6f7fb;
+  color: #0f172a;
+}
+
+* { box-sizing: border-box; }
+img { max-width: 100%; display: block; }
+
+/* Menu overlay */
+.mat-mdc-menu-panel { background-color: #f6f7fb !important; }
+.mat-mdc-menu-content { padding: 6px 0; }
+.mat-mdc-menu-item { color: #0f172a; }
+
+/* Menu overlay (panelClass) */
+.app-menu.mat-mdc-menu-panel { background-color: #f6f7fb !important; }
+.app-menu .mat-mdc-menu-content { padding: 6px 0; }
+.app-menu .mat-mdc-menu-item { color: #0f172a; }

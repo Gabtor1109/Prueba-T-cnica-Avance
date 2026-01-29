@@ -1,0 +1,63 @@
+﻿<mat-toolbar class="topbar">
+  <!-- LEFT -->
+  <div class="left">
+    <button mat-icon-button class="menu-btn" [matMenuTriggerFor]="menu" aria-label="MenÃº">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <a class="brand" routerLink="/home">Prueba FrontEnd</a>
+
+    <nav class="nav-links">
+      <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
+      <a mat-button routerLink="/listado" routerLinkActive="active">Listado</a>
+      <a mat-button routerLink="/skills" routerLinkActive="active">Skills</a>
+
+      <a mat-button routerLink="/login" *ngIf="!isLoggedIn()">Login</a>
+      <button mat-button (click)="logout()" *ngIf="isLoggedIn()">Cerrar sesión</button>
+    </nav>
+  </div>
+
+  <!-- CENTER -->
+  <div class="center">
+    <mat-form-field class="search" appearance="outline" [class.mobile-open]="showMobileSearch">
+      <mat-label>Buscar</mat-label>
+      <input matInput placeholder="No funcional" />
+      <button mat-icon-button matSuffix aria-label="Buscar">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <!-- RIGHT (puedes dejarlo vacÃ­o o poner algo) -->
+  <div class="right">
+    <!-- Mobile search icon (si quieres) -->
+    <button mat-icon-button class="searchIcon" aria-label="Buscar" (click)="showMobileSearch = !showMobileSearch">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <mat-menu #menu="matMenu" panelClass="app-menu">
+    <button mat-menu-item routerLink="/home">
+      <mat-icon>home</mat-icon><span>Home</span>
+    </button>
+    <button mat-menu-item routerLink="/listado">
+      <mat-icon>list</mat-icon><span>Listado</span>
+    </button>
+    <button mat-menu-item routerLink="/skills">
+      <mat-icon>bolt</mat-icon><span>Skills</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-menu-item routerLink="/login" *ngIf="!isLoggedIn()">
+      <mat-icon>login</mat-icon><span>Login</span>
+    </button>
+    <button mat-menu-item (click)="logout()" *ngIf="isLoggedIn()">
+      <mat-icon>logout</mat-icon><span>Cerrar sesión</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+
+

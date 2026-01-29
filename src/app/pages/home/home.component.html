@@ -1,0 +1,83 @@
+﻿<div class="page">
+
+  <!-- HERO / SALUDO -->
+  <mat-card class="hero" *ngIf="isLoggedIn()">
+    <div class="hero__top">
+      <h1>Hola <span class="wave">👋</span></h1>
+      <p>Sesion iniciada con <b>{{ email }}</b></p>
+    </div>
+  </mat-card>
+
+  <!-- BANNERS -->
+  <section class="section">
+    <div class="section__head">
+      <h2>Banners</h2>
+      <span class="hint">Swiper + paginacion</span>
+    </div>
+
+    <mat-card class="bannerCard">
+      <swiper-container #swiperEl class="swiper" loop="true" pagination="true" pagination-clickable="true" autoplay="true" autoplay-delay="5000" autoplay-disable-on-interaction="false" slides-per-view="1">
+        <swiper-slide *ngFor="let b of banners">
+          <img [src]="b.src" [alt]="b.alt" class="bannerImg" (load)="onBannerLoad()" />
+        </swiper-slide>
+      </swiper-container>
+    </mat-card>
+  </section>
+
+  <!-- CARDS -->
+  <section class="section">
+    <div class="section__head">
+      <h2>Destacados</h2>
+      <span class="hint">Click en imagen → modal</span>
+    </div>
+
+    <div class="cards">
+      <mat-card class="c" *ngFor="let c of cards">
+        <div class="thumbWrap" (click)="openImage(c.img, c.title)">
+          <img class="thumb" [src]="c.img" [alt]="c.title" />
+          <div class="thumbOverlay">Ver</div>
+        </div>
+
+        <div class="content">
+          <h3>{{ c.title }}</h3>
+          <p>{{ c.text }}</p>
+        </div>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section">
+    <div class="section__head">
+      <h2>Acerca de nosotros</h2>
+    </div>
+
+    <mat-card class="about">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </mat-card>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta">
+    <button mat-raised-button color="primary" routerLink="/listado" class="go">
+      Ir a Listado
+    </button>
+  </div>
+
+  <!-- SELECCIONADO -->
+  <mat-card class="selected" *ngIf="(selectedStream | async) as s">
+    <h2 class="selectedTitle">Seleccionado desde Listado</h2>
+    <div class="sel">
+      <img [src]="s.image" [alt]="s.title" />
+      <div>
+        <h3>{{ s.title }}</h3>
+        <p class="muted">{{ s.subtitle }}</p>
+        <small class="muted">{{ s.extra }}</small>
+      </div>
+    </div>
+  </mat-card>
+
+</div>
+

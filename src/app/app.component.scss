@@ -1,0 +1,14 @@
+.app-shell {
+  min-height: calc(100vh - 128px);
+  padding: 18px 14px;
+
+  /* 👇 agrega esto */
+  padding-top: 82px; /* ajusta si tu header es más alto */
+}
+
+@media (min-width: 900px) {
+  .app-shell {
+    padding: 26px 18px;
+    padding-top: 86px;
+  }
+}

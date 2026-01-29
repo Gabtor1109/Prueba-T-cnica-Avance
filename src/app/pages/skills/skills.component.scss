@@ -1,0 +1,84 @@
+.wrap { display: grid; place-items: center; min-height: 60vh; position: relative; }
+
+.panel {
+  width: min(720px, 92vw);
+  padding: 16px;
+  border-radius: 18px;
+}
+
+.magic {
+  margin-top: 10px;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, .18);
+  &:hover { transform: translateY(-2px) scale(1.02); }
+  &:active { transform: translateY(0) scale(.99); }
+}
+
+.magic::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(
+    from 180deg,
+    rgba(99,102,241,.0),
+    rgba(99,102,241,.65),
+    rgba(16,185,129,.55),
+    rgba(99,102,241,.0)
+  );
+  animation: spin 2.2s linear infinite;
+}
+
+.magic::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: inherit;
+  border-radius: 12px;
+}
+
+.magic > * {
+  position: relative;
+  z-index: 1;
+}
+
+.showcase { margin-top: 14px; display: grid; gap: 12px; }
+
+.glass-card {
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(0,0,0,.08);
+  backdrop-filter: blur(8px);
+  transition: transform .2s ease;
+  &:hover { transform: translateY(-4px); }
+}
+
+/* partículas */
+.dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--s, 10px);
+  height: var(--s, 10px);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255,255,255,.9), var(--c, currentColor) 60%, rgba(0,0,0,.08) 100%);
+  box-shadow: 0 0 14px rgba(255,255,255,.35), 0 0 18px var(--c, currentColor);
+  opacity: .9;
+  animation: fly var(--d, .7s) cubic-bezier(.2,.7,.2,1) forwards;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes fly {
+  to {
+    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(.3);
+    opacity: 0;
+    filter: blur(1px);
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

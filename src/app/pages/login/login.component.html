@@ -1,0 +1,38 @@
+<div class="wrap">
+  <mat-card class="card">
+    <h2>Iniciar sesión</h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+        <mat-icon matSuffix>mail</mat-icon>
+
+        <mat-error *ngIf="submitted && email?.hasError('required')">
+          El email es obligatorio
+        </mat-error>
+        <mat-error *ngIf="submitted && email?.hasError('email')">
+          Formato de email inválido
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+          <mat-icon>{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon>
+        </button>
+
+        <mat-error *ngIf="submitted && password?.hasError('required')">
+          La contraseña es obligatoria
+        </mat-error>
+      </mat-form-field>
+
+      <p class="ok" *ngIf="isAllValid()">Datos correctos ✅</p>
+
+      <button mat-raised-button color="primary" type="submit" class="btn">
+        Login
+      </button>
+    </form>
+  </mat-card>
+</div>
